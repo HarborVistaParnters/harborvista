@@ -14,7 +14,7 @@ const { name, image, title, intro } = Astro.props;
     <div class="w-full md:w-2/3 space-y-8" x-data="{ modalOpen: false }">
         <div class="space-y-1">
             <h3 class="text-2xl font-semibold text-brand-400">{name}</h3>
-            <p class="uppercase text-sm tracking-[0.15em] text-neutral-700/70">{title}</p>
+            <p class="uppercase text-sm tracking-[0.15em] text-neutral-600">{title}</p>
         </div>
         <p class="">{intro}</p>
         <Button size="small" x-on:click="modalOpen = true">

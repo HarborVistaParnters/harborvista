@@ -26,7 +26,7 @@ const { id } = Astro.props;
 
 ---
 
-<article id={id} class="max-w-7xl mx-auto px-4 mt-48 grid md:grid-cols-2 gap-16 items-center"  x-intersect={`linkActive = '${id}'`}>
+<article id={id} class="max-w-7xl mx-auto px-4 pt-12 grid md:grid-cols-2 gap-16 items-center"  x-intersect={`linkActive = '${id}'`}>
     <div class="md:col-span-2 text-center max-w-2xl mx-auto text-lg">
         Since inception in 2020, the firm has purchased <span class="font-semibold text-brand-400">27 properties</span> with 3 dispositions, <span class="font-semibold text-brand-400">9 stabilized refinances</span>, and <span class="font-semibold text-brand-400">15 properties</span> in the active development pipeline. Harbor Vista’s real estate portfolio has an estimated value of <span class="font-black text-brand-400">$58,000,000</span>.
     </div>
@@ -47,7 +47,7 @@ const { id } = Astro.props;
                     </div>
                     <div class="text-accent text-4xl">+</div>
                 </div>
-                <div class="uppercase tracking-[0.15em] text-neutral-700/70">{item.name}</div>
+                <div class="uppercase tracking-[0.15em] text-neutral-600">{item.name}</div>
             </div>
         )}
     </div>

@@ -41,7 +41,7 @@ const { id } = Astro.props;
 
 ---
 
-<article id={id} class="max-w-7xl mx-auto px-4" x-intersect={`linkActive = '${id}'`}>
+<article id={id} class="max-w-7xl mx-auto px-4 pt-8" x-intersect={`linkActive = '${id}'`}>
     <h2 class="mb-20 text-center font-semibold text-xl text-brand-600 uppercase tracking-[0.15em]">Management Team</h2>
     <div class="grid xl:grid-cols-2 gap-x-16 gap-y-32 items-center">
         {members.map(member =>

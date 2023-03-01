@@ -3,10 +3,16 @@ import Button from "./Button.astro";
 
 const { navigation } = Astro.props;
 ---
-<header class="fixed left-0 right-0 top-0 z-50 bg-white shadow-lg shadow-brand-700/10">
+<header 
+    x-data="scrollToReveal()"
+    x-ref="navbar"
+    x-on:scroll.window="scroll()"
+    x-bind:class="{ 'top-0': shown, '-top-24': !shown }"
+    class="hidden md:block fixed left-0 right-0 transition-all duration-300 z-50 bg-white shadow-lg shadow-brand-700/10"
+>
     <div class="flex flex-wrap justify-between items-center px-4 xl:px-12 py-6 mx-auto">
         <div>
-            <div class="uppercase tracking-widest font-semibold text-brand-400">Harbor Vista</div>
+            <a href="#" class="uppercase tracking-widest font-semibold text-brand-400 hover:text-brand-400/70">Harbor Vista</a>
         </div>
         <nav class="flex gap-4 flex-wrap items-center text-center">
             <!-- Use Alpine x-bind to add conditional active state class when element with same id scrolls into view -->
@@ -22,3 +28,20 @@ const { navigation } = Astro.props;
         </nav>
     </div>
 </header>
+
+<script is:inline>
+    function scrollToReveal() {
+        return {
+            shown: true,
+            lastPos: window.scrollY + 0,
+            scroll() {
+                if (window.scrollY < 200) {
+                    this.shown = true;
+                } else {
+                    this.shown = window.scrollY > this.$refs.navbar.offsetHeight && this.lastPos > window.scrollY;
+                    this.lastPos = window.scrollY;
+                }
+            }
+        }
+    }
+</script>
