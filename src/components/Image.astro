@@ -1,0 +1,32 @@
+---
+import Image from "@11ty/eleventy-img"
+import { generateImage } from "../utils/generateImage";
+
+const { src, alt, options = {}, sizes = '100vw', quality = 90, ...props } = Astro.props;
+
+const imageMetadata = await generateImage(src, Object.assign(options, {
+    widths: [400, 800, 1200, 1600],
+    formats: ['webp', 'jpeg'],
+    sharpWebpOptions: {
+        quality: quality,
+    },
+}))
+
+let lowsrc = imageMetadata.webp[0];
+let highsrc = imageMetadata.webp[imageMetadata.webp.length - 1];
+
+const imageAttributes = {
+    src: lowsrc.url,
+    alt: alt,
+    width: lowsrc.width,
+    height: highsrc.height,
+    sizes: sizes,
+    loading: 'lazy',
+    decoding: 'async',
+    ...props
+}
+
+const html = Image.generateHTML(imageMetadata, imageAttributes);
+---
+
+<Fragment set:html={html} />

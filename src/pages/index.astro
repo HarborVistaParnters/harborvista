@@ -1,0 +1,21 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Button from "../components/Button.astro";
+import Hero from "../components/sections/Hero.astro";
+import Portfolio from "../components/sections/Portfolio.astro";
+import CTA from "../components/sections/CTA.astro";
+import Team from "../components/sections/Team.astro";
+
+const title = "Harbor Vista"
+const description = "Harbor Vista focuses on ground-up and value-add real estate investment projects throughout the state of California with a specific emphasis on the opportunities for increased-density made possible by recent statewide and local legislative changes."
+---
+
+<Layout>
+	<main slot="main-content">
+		<Hero id="about" title={title} description={description} />
+		<Portfolio id="portfolio" />
+		<CTA id="newsletter" />
+		<Team id="team" />
+	</main>
+</Layout>
+

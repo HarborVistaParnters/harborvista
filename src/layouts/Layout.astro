@@ -1,0 +1,88 @@
+---
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import FontLoad from "../components/FontLoad.astro";
+
+const navigation = [
+    {
+        name: 'Our Portfolio',
+        href: 'portfolio'
+    },
+    {
+        name: 'Management Team',
+        href: 'team'
+    },
+    {
+        name: 'Contact',
+        href: 'contact'
+    }
+]
+---
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <slot name="SEO"></slot>
+    <FontLoad />
+    <style>
+        @font-face {
+        font-family: "Figtree";
+        src: url("/fonts/Figtree-Regular.woff2") format("woff2");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+        }
+        @font-face {
+            font-family: "Figtree";
+            src: url("/fonts/Figtree-Italic.woff2") format("woff2");
+            font-weight: 400;
+            font-style: italic;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: "Figtree";
+            src: url("/fonts/Figtree-Medium.woff2") format("woff2");
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: "Figtree";
+            src: url("/fonts/Figtree-SemiBold.woff2") format("woff2");
+            font-weight: 600;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: "Figtree";
+            src: url("/fonts/Figtree-Black.woff2") format("woff2");
+            font-weight: 900;
+            font-style: normal;
+            font-display: swap;
+        }
+    </style>
+    <script defer src="https://unpkg.com/@alpinejs/ui@3.10.5-beta.8/dist/cdn.min.js"></script>
+    <script defer src="https://unpkg.com/@alpinejs/focus@3.10.5/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.10.5/dist/cdn.min.js"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.10.5/dist/cdn.min.js"></script>
+</head>
+<body class="text-neutral-700 leading-normal" x-data="{ linkActive: false }">
+    <SiteHeader navigation={navigation} />
+    <slot name='main-content'></slot>
+    <SiteFooter navigation={navigation} />
+</body>
+</html>
+
+<script>
+	// import Alpine from "alpinejs";
+	// import intersect from "@alpinejs/intersect";
+    // import focus from "@alpinejs/focus";
+
+    // Alpine.plugin(intersect);
+    // Alpine.plugin(focus);
+	// Alpine.start();
+</script>

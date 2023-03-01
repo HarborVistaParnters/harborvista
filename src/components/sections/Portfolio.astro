@@ -1,0 +1,72 @@
+---
+import Image from "../Image.astro";
+// import portfolioImg from "../../assets/lb-5.jpg"
+
+const portfolioImg = "src/assets/lb-5.jpg"
+
+const portfolioData = [
+    {
+        name: "Total Value",
+        value: "58",
+        id: 'value'
+    },
+    {
+        name: "Total Properties",
+        value: "27",
+        id: 'properties'
+    },
+    {
+        name: "Total Units Permitted",
+        value: "1500",
+        id: 'permitted'
+    }
+]
+
+const { id } = Astro.props;
+
+---
+
+<article id={id} class="max-w-7xl mx-auto px-4 mt-48 grid md:grid-cols-2 gap-16 items-center"  x-intersect={`linkActive = '${id}'`}>
+    <div class="md:col-span-2 text-center max-w-2xl mx-auto text-lg">
+        Since inception in 2020, the firm has purchased <span class="font-semibold text-brand-400">27 properties</span> with 3 dispositions, <span class="font-semibold text-brand-400">9 stabilized refinances</span>, and <span class="font-semibold text-brand-400">15 properties</span> in the active development pipeline. Harbor Vista’s real estate portfolio has an estimated value of <span class="font-black text-brand-400">$58,000,000</span>.
+    </div>
+    <!-- Image -->
+    <div class="relative m-8">
+        <div class="absolute inset-0 z-10 flex justify-center items-center"><h2 class="font-semibold tracking-[0.15em] uppercase text-white text-4xl text-center">Our <br>Portfolio</h2></div>
+        <div class="absolute inset-0 z-[2] bg-black/30 rounded-2xl"></div>
+        <Image src={portfolioImg} alt="Long Beach harbor" class="object-cover aspect-[4/5] rounded-2xl" />
+        <!-- <img src={portfolioImg} alt="Long Beach" class="object-cover aspect-[4/5] rounded-2xl"> -->
+    </div>
+    <!-- Stats -->
+    <div class="space-y-8 pl-8">
+        {portfolioData.map(item =>
+            <div class="space-y-4 border-t border-neutral-400/30 pt-8 first:pt-0 first:border-none">
+                <div class="inline-flex items-center gap-2">
+                    <div class="font-black text-7xl text-brand-700" id={item.id}>
+                        {item.value}
+                    </div>
+                    <div class="text-accent text-4xl">+</div>
+                </div>
+                <div class="uppercase tracking-[0.15em] text-neutral-700/70">{item.name}</div>
+            </div>
+        )}
+    </div>
+</article>
+
+<script>
+    import { CountUp } from 'countup.js'
+
+    const values = { value: 58, properties: 27, permitted: 1500 }
+
+    // Reference https://github.com/danro/jquery-easing/blob/master/jquery.easing.js
+    const easeInOutSine = (t, b, c, d) => {
+		return -c/2 * (Math.cos(Math.PI*t/d) - 1) + b;
+	};
+
+    let baseOptions = { startVal: 0, easingFn: easeInOutSine, enableScrollSpy: true, scrollSpyOnce: true, duration: 1.5 }
+    const formattingOptions = { prefix: '$', suffix: 'M' }
+
+    const counter1 = new CountUp('value', values.value, {...baseOptions, ...formattingOptions });
+    const counter2 = new CountUp('properties', values.properties, baseOptions);
+    const counter3 = new CountUp('permitted', values.permitted, {...baseOptions })
+</script>

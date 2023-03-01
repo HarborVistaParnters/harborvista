@@ -1,0 +1,56 @@
+---
+import Image from "./Image.astro";
+import Button from "./Button.astro";
+
+const { name, image, title, intro } = Astro.props;
+---
+
+<div class="flex flex-col px-4 xl:px-0 md:flex-row gap-8 items-center">
+    <div class="w-full md:w-1/3 relative">
+        <Image src={image} alt={name + ' headshot'} class="relative aspect-[5/7] rounded-lg object-cover z-[2]" />
+        <!-- <img src={image} alt={name + ' headshot'} class="relative aspect-[5/7] rounded-lg object-cover z-[2]"> -->
+        <div class="absolute -left-4 -top-4 mb-4 w-full h-[calc(100%-1rem)] rounded-lg border-2 border-brand-300"></div>
+    </div>
+    <div class="w-full md:w-2/3 space-y-8" x-data="{ modalOpen: false }">
+        <div class="space-y-1">
+            <h3 class="text-2xl font-semibold text-brand-400">{name}</h3>
+            <p class="uppercase text-sm tracking-[0.15em] text-neutral-700/70">{title}</p>
+        </div>
+        <p class="">{intro}</p>
+        <Button size="small" x-on:click="modalOpen = true">
+            Read More
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="relative -top-[0.5px] w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                <path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd" />
+            </svg>
+        </Button>
+
+        <!-- Modal: Alpine Headless Dialog -->
+
+
+        <!-- Modal -->
+        <!-- <div 
+            x-show="modalOpen"
+            style="display: none"
+            x-on:keydown.escape.prevent.stop="modalOpen = false"
+            role="dialog"
+            aria-modal="true"
+            class="fixed inset-0 z-20 overflow-y-auto"
+        >
+            <div 
+                x-show="modalOpen"
+                x-transition
+                x-on:click="modalOpen = false"
+                class="relative bg-white flex min-h-screen items-center p-8"
+            >
+                <div
+                    x-on:click.stop
+                    class="relative max-w-7xl h-full overflow-y-auto mx-auto p-4"
+                >
+                    <Button x-on:click="modalOpen = false">Close</Button>
+                    <div class="font-semibold">{name}</div>
+                    <div>{intro}</div>
+                </div>
+            </div>
+        </div> -->
+    </div>
+</div>
