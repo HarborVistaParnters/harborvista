@@ -17,6 +17,10 @@ const navigation = [
         href: 'contact'
     }
 ]
+
+const route = Astro.url.pathname;
+
+const { title, description } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -25,8 +29,10 @@ const navigation = [
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>{title}</title>
+    <meta name="description" content={description}>
     <slot name="SEO"></slot>
+    <link rel="icon" type="image/svg+xml" href="/hv-favicon.svg">
     <FontLoad />
     <style>
         @font-face {
@@ -64,16 +70,19 @@ const navigation = [
             font-style: normal;
             font-display: swap;
         }
+
+        img {
+            width: 100%;
+            height: auto;
+        }
     </style>
-    <script defer src="https://unpkg.com/@alpinejs/ui@3.10.5-beta.8/dist/cdn.min.js"></script>
-    <script defer src="https://unpkg.com/@alpinejs/focus@3.10.5/dist/cdn.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.10.5/dist/cdn.min.js"></script>
     <script defer src="https://unpkg.com/alpinejs@3.10.5/dist/cdn.min.js"></script>
 </head>
 <body class="text-neutral-700 leading-normal" x-data="{ linkActive: false }">
-    <SiteHeader navigation={navigation} />
+    <SiteHeader navigation={navigation} isHome={route === '/'} />
     <slot name='main-content'></slot>
-    <SiteFooter navigation={navigation} />
+    <SiteFooter navigation={navigation} isHome={route === '/'} />
 </body>
 </html>
 

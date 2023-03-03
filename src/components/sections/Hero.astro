@@ -8,13 +8,13 @@ const heroBg = 'src/assets/lb-2.jpg'
 const { id, title, description } = Astro.props;
 ---
 
-<article id={id} class="relative h-[90vh] lg:h-[80vh] overflow-hidden">
+<article id={id} class="relative min-h-[80vh] sm:min-h-min md:h-[90vh] lg:h-[80vh] overflow-hidden">
     <!-- Text Wrapper -->
-    <div class="relative h-full z-10 flex flex-col justify-end items-center text-center max-w-3xl mx-auto gap-y-8 px-4 py-8">
+    <div class="mt-48 md:mt-0 relative h-full z-10 flex flex-col justify-end items-center text-center max-w-3xl mx-auto gap-y-8 px-4 py-8">
         <h1 class="text-6xl font-semibold tracking-[0.2rem] uppercase text-white">{title}</h1>
-        <p class="text-lg text-brand-300">{description}</p>
+        <p class="text-base md:text-lg text-brand-300">{description}</p>
         <!-- button group -->
-        <div class="flex justify-center items-center flex-wrap gap-6">
+        <div class="flex justify-center items-center flex-wrap gap-6 mb-12 md:mb-0">
             <Button href="#portfolio">
                 Learn More
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="relative -top-[0.5px] w-4 h-4 transition-transform group-hover:translate-x-1">
@@ -35,7 +35,7 @@ const { id, title, description } = Astro.props;
     <Image src={heroBg} alt="Long Beach harbor at sunset." class="absolute inset-0 h-full w-full object-cover" />
     <!-- <img src={heroBg} alt="" class="absolute inset-0 h-full w-full object-cover"> -->
 </article>
-<svg preserveAspectRatio="xMidYMid meet" viewBox="0 0 1440 118" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full relative aspect-[1440/118] mb-32">
+<svg preserveAspectRatio="xMidYMid meet" viewBox="0 0 1440 118" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full relative aspect-[1440/118] mb-8 md:mb-32">
     <path d="M1440 0H0V67C280.5 134 1100.5 134 1440 67V0Z" fill="url(#paint0_linear_79_25)"/>
     <defs>
     <linearGradient id="paint0_linear_79_25" x1="720.5" y1="0" x2="720.5" y2="120" gradientUnits="userSpaceOnUse">

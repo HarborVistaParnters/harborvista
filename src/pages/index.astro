@@ -10,7 +10,10 @@ const title = "Harbor Vista"
 const description = "Harbor Vista focuses on ground-up and value-add real estate investment projects throughout the state of California with a specific emphasis on the opportunities for increased-density made possible by recent statewide and local legislative changes."
 ---
 
-<Layout>
+<Layout title={title} description={description}>
+	<Fragment slot="SEO">
+		
+	</Fragment>
 	<main slot="main-content">
 		<Hero id="about" title={title} description={description} />
 		<Portfolio id="portfolio" />

@@ -1,24 +1,27 @@
 ---
 import Button from "./Button.astro";
 
-const { navigation } = Astro.props;
+const { navigation, isHome } = Astro.props;
 ---
-<header 
+<header>
+<!-- Desktop nav -->
+<div 
     x-data="scrollToReveal()"
     x-ref="navbar"
     x-on:scroll.window="scroll()"
     x-bind:class="{ 'top-0': shown, '-top-24': !shown }"
-    class="hidden md:block fixed left-0 right-0 transition-all duration-300 z-50 bg-white shadow-lg shadow-brand-700/10"
+    class="fixed left-0 right-0 transition-all duration-300 z-50 bg-white shadow-lg shadow-brand-700/10"
 >
-    <div class="flex flex-wrap justify-between items-center px-4 xl:px-12 py-6 mx-auto">
+    <div class="hidden md:flex flex-wrap justify-between items-center px-4 xl:px-12 py-6 mx-auto">
+        <!-- Logo -->
         <div>
-            <a href="#" class="uppercase tracking-widest font-semibold text-brand-400 hover:text-brand-400/70">Harbor Vista</a>
+            <a href={isHome ? '#' : '/'} class="uppercase tracking-widest font-semibold text-brand-400 hover:text-brand-400/70">Harbor Vista</a>
         </div>
         <nav class="flex gap-4 flex-wrap items-center text-center">
             <!-- Use Alpine x-bind to add conditional active state class when element with same id scrolls into view -->
             <!-- See individual sections for intersect; x-data is on body el -->
             {navigation.map(item =>
-                <a href={`#${item.href}`} class="py-2 px-4 rounded-md transition-colors hover:text-brand-400 hover:bg-brand-300/40" x-bind:class={`linkActive == '${item.href}' ? 'text-brand-400' : 'text-neutral-700' `}>{item.name}</a>
+                <a href={isHome ? `#${item.href}` : `/#${item.href}`} class="py-2 px-4 rounded-md transition-colors hover:text-brand-400 hover:bg-brand-300/40" x-bind:class={`linkActive == '${item.href}' ? 'text-brand-400' : 'text-neutral-700' `}>{item.name}</a>
             )}
             <Button className="ml-4">Investors
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="relative -top-[0.5px] w-4 h-4 transition-transform group-hover:translate-x-1">
@@ -27,6 +30,42 @@ const { navigation } = Astro.props;
             </Button>
         </nav>
     </div>
+</div>
+
+<!-- Mobile nav -->
+<div class="fixed top-0 left-0 right-0 z-50 bg-white shadow-lg shadow-brand-700/10">
+    <div class="md:hidden px-4 py-2" x-data="{ navOpen: false }">
+        <div class="flex justify-between items-center">
+        <!-- Logo -->
+            <div>
+                <a href={isHome ? '#' : '/'} class="text-sm uppercase tracking-widest font-semibold text-brand-400 hover:text-brand-400/70">Harbor Vista</a>
+            </div>
+            <Button theme="nav" x-on:click="navOpen = !navOpen" class="absolute right-0">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6" :class="{ 'hidden': navOpen }">
+                    <path fill-rule="evenodd" d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm8.25 5.25a.75.75 0 01.75-.75h8.25a.75.75 0 010 1.5H12a.75.75 0 01-.75-.75z" clip-rule="evenodd" />
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6" :class="{ 'hidden': ! navOpen }">
+                    <path fill-rule="evenodd" d="M5.47 5.47a.75.75 0 011.06 0L12 10.94l5.47-5.47a.75.75 0 111.06 1.06L13.06 12l5.47 5.47a.75.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 01-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 010-1.06z" clip-rule="evenodd" />
+                </svg>
+                <span class="sr-only">Toggle Menu</span>
+            </Button>
+        </div>
+        <nav 
+            x-show="navOpen"
+            x-transition
+            class="relative inset-0 py-6 bg-white flex flex-col gap-y-4"
+        >
+        {navigation.map(item =>
+            <Button style="link" size="none" x-on:click="navOpen = false" href={isHome ? `#${item.href}` : `/#${item.href}`} className="py-4 px-4 rounded-md transition-colors hover:text-brand-400 hover:bg-brand-300/40" x-bind:class={`linkActive == '${item.href}' ? 'text-brand-400' : 'text-neutral-700' `}>{item.name}</Button>
+        )}
+        <Button className="">Investors
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="relative -top-[0.5px] w-4 h-4 transition-transform group-hover:translate-x-1">
+                <path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd" />
+            </svg>
+        </Button>
+        </nav>
+    </div>
+</div>
 </header>
 
 <script is:inline>

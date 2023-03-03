@@ -1,6 +1,6 @@
 ---
 import Button from "./Button.astro";
-const { navigation } = Astro.props;
+const { navigation, isHome } = Astro.props;
 
 const copyright = new Date().getFullYear();
 ---
@@ -12,7 +12,7 @@ const copyright = new Date().getFullYear();
             </div>
             <div class="flex gap-8 items-center justify-center text-center flex-wrap mt-4">
                 {navigation.map(item =>
-                    <a href={`#${item.href}`} class="text-neutral-600 hover:text-neutral-700 hover:underline">{item.name}</a>
+                    <a href={isHome ? `#${item.href}` : `/#${item.href}`} class="text-neutral-600 hover:text-neutral-700 hover:underline">{item.name}</a>
                 )}
                 <Button size="small">Investors
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="relative -top-[0.5px] w-4 h-4 transition-transform group-hover:translate-x-1">

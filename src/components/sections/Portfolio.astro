@@ -31,16 +31,16 @@ const { id } = Astro.props;
         Since inception in 2020, the firm has purchased <span class="font-semibold text-brand-400">27 properties</span> with 3 dispositions, <span class="font-semibold text-brand-400">9 stabilized refinances</span>, and <span class="font-semibold text-brand-400">15 properties</span> in the active development pipeline. Harbor Vista’s real estate portfolio has an estimated value of <span class="font-black text-brand-400">$58,000,000</span>.
     </div>
     <!-- Image -->
-    <div class="relative m-8">
+    <div class="relative md:m-8">
         <div class="absolute inset-0 z-10 flex justify-center items-center"><h2 class="font-semibold tracking-[0.15em] uppercase text-white text-4xl text-center">Our <br>Portfolio</h2></div>
         <div class="absolute inset-0 z-[2] bg-black/30 rounded-2xl"></div>
         <Image src={portfolioImg} alt="Long Beach harbor" class="object-cover aspect-[4/5] rounded-2xl" />
         <!-- <img src={portfolioImg} alt="Long Beach" class="object-cover aspect-[4/5] rounded-2xl"> -->
     </div>
     <!-- Stats -->
-    <div class="space-y-8 pl-8">
+    <div class="space-y-8 lg:pl-8">
         {portfolioData.map(item =>
-            <div class="space-y-4 border-t border-neutral-400/30 pt-8 first:pt-0 first:border-none">
+            <div class="flex flex-col justify-center items-center md:items-start space-y-4 border-t border-neutral-400/30 pt-8 first:pt-0 first:border-none">
                 <div class="inline-flex items-center gap-2">
                     <div class="font-black text-7xl text-brand-700" id={item.id}>
                         {item.value}

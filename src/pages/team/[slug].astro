@@ -1,0 +1,73 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Button from "../../components/Button.astro";
+import Image from "../../components/Image.astro";
+
+export async function getStaticPaths() {
+    const teamMembers = await Astro.glob('../../content/team/*.md');
+    
+    return teamMembers.map((teamMember) => {
+        return {
+            params: { slug: teamMember.frontmatter.slug },
+            props: { teamMember }
+        }
+    })
+}
+
+const { slug } = Astro.params;
+const { frontmatter, Content } = Astro.props.teamMember;
+---
+
+<Layout title={frontmatter.name + " • Harbor Vista"} description={frontmatter.intro}>
+    <Fragment slot="SEO"></Fragment>
+    <main slot="main-content">
+        <div class="mt-16 md:mt-28 max-w-7xl mx-auto px-4 pt-8">
+            <Button size="small" href="/#team">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="relative -top-[0.5px] w-4 h-4 transition-transform group-hover:-translate-x-1">
+                    <path fill-rule="evenodd" d="M17 10a.75.75 0 01-.75.75H5.612l4.158 3.96a.75.75 0 11-1.04 1.08l-5.5-5.25a.75.75 0 010-1.08l5.5-5.25a.75.75 0 111.04 1.08L5.612 9.25H16.25A.75.75 0 0117 10z" clip-rule="evenodd" />
+                </svg>
+                Back to Team
+            </Button>
+            <div class="grid grid-cols-5 gap-12 items-center mt-16">
+                <div class="col-span-5 lg:col-span-2 relative m-4 lg:m-0">
+                    <div class="frame">
+                        <Image src={`./public/${frontmatter.headshot}`} alt={frontmatter.name + ' headshot'} class="relative aspect-[5/7] object-cover rounded-lg z-[2]" />
+                    </div>
+                    <div class="absolute -left-4 -top-4 mb-4 w-full h-[calc(100%-1rem)] rounded-lg border-2 border-brand-300"></div>
+                </div>
+                <div class="col-span-5 lg:col-span-3">
+                    <div class="space-y-2 mb-8">
+                        <h1 class="text-4xl font-semibold text-brand-400">{frontmatter.name}</h1>
+                        <p class="uppercase tracking-[0.15em] text-neutral-600">{frontmatter.title}</p>
+                    </div>
+                    <div class="space-y-6 max-w-[65ch]">
+                        <Content />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</Layout>
+
+<!-- <style is:global>
+    .frame {
+        --frame-width: 5;
+        --frame-height: 7;
+        aspect-ratio: var(--frame-width) / var(--frame-height);
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .frame > picture {
+        inline-size: 100%;
+        block-size: 100%;
+    }
+
+    .frame img {
+        height: 100%;
+        width: auto;
+        object-fit: cover;
+    }
+</style> -->

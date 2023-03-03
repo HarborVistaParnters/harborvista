@@ -2,7 +2,7 @@
 import Image from "@11ty/eleventy-img"
 import { generateImage } from "../utils/generateImage";
 
-const { src, alt, options = {}, sizes = '100vw', quality = 90, ...props } = Astro.props;
+const { src, frame = 'frame', alt, options = {}, sizes = '100vw', quality = 90, ...props } = Astro.props;
 
 const imageMetadata = await generateImage(src, Object.assign(options, {
     widths: [400, 800, 1200, 1600],
@@ -27,6 +27,20 @@ const imageAttributes = {
 }
 
 const html = Image.generateHTML(imageMetadata, imageAttributes);
+
+// const html = `<picture class=${frame}>
+//     ${Object.values(imageMetadata).map(imageFormat => {
+//         return `<source type="${imageFormat[0].sourceType}" srcset="${imageFormat.map(entry => entry.srcset).join(", ")}" sizes="${sizes}">`;
+//     }).join("\n")}
+//     <img
+//       src="${lowsrc.url}"
+//       width="${highsrc.width}"
+//       height="${highsrc.height}"
+//       alt="${alt}"
+//       loading="lazy"
+//       decoding="async"
+//     />
+// </picture>`;
 ---
 
 <Fragment set:html={html} />
