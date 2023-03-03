@@ -28,7 +28,8 @@ const { frontmatter, Content } = Astro.props.teamMember;
                 </svg>
                 Back to Team
             </Button>
-            <div class="grid grid-cols-5 gap-12 items-center mt-16">
+            <div class="text-sm text-neutral-600 mt-8 mb-12"><a href="/" class="text-brand-400 underline hover:no-underline">Harbor Vista</a> <span class="text-neutral-400/50 mx-2">/</span> <a href="/#team" class="text-brand-400 underline hover:no-underline">Management Team</a> <span class="text-neutral-400/50 mx-2">/</span> {frontmatter.name}</div>
+            <div class="grid grid-cols-5 gap-12 items-center">
                 <div class="col-span-5 lg:col-span-2 relative m-4 lg:m-0">
                     <div class="frame">
                         <Image src={`./public/${frontmatter.headshot}`} alt={frontmatter.name + ' headshot'} class="relative aspect-[5/7] object-cover rounded-lg z-[2]" />
