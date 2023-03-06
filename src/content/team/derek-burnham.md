@@ -1,15 +1,15 @@
 ---
 name: Derek Burnham
-title: VP of Planning
+title: Partner
 intro: >-
-  As VP of Planning, Derek Burnham is primarily focused on the entitlements and
-  permitting, site identification, and managing key civic relationships.
+  Derek Burnham is primarily focused on the entitlements and permitting, site
+  identification, and managing key civic relationships.
 headshot: /burnham-crop.jpg
-order: 3
+order: 4
 slug: derek-burnham
 ---
 
-As **VP of Planning**, Derek Burnham is primarily focused on the entitlements and permitting, site identification, and managing key civic relationships.
+Derek Burnham is primarily focused on the entitlements and permitting, site identification, and managing key civic relationships.
 
 Derek has more than 20 years experience in the urban planning and real estate fields in both the public and private sector. Derek served as the Planning Administrator for the City of Long Beach where he was involved in many high-profile projects throughout Long Beach including the preparation of the award winning Downtown Plan.
 

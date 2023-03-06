@@ -1,15 +1,15 @@
 ---
 name: Dan Lewin
-title: Executive VP
+title: Partner
 intro: >-
-  As Executive VP, Dan Lewin is primarily focused on acquisitions and
-  dispositions, capital markets, investor relations, and asset management.
+  Dan Lewin is primarily focused on acquisitions and dispositions, capital
+  markets, investor relations, and asset management.
 headshot: /lewin-crop.jpg
 slug: dan-lewin
 order: 1
 ---
 
-As **Executive VP**, Dan Lewin is primarily focused on acquisitions and dispositions, capital markets, investor relations, and asset management.
+Dan Lewin is primarily focused on acquisitions and dispositions, capital markets, investor relations, and asset management.
 
 Dan began his career in 2012 as an acquisitions associate at Turnstone Capital, a local real estate development firm in partnership with Tricon American Homes and Colony Capital to purchase and execute value-add 1-4 unit properties at a discount in the wake of the ‘08 Recession.
 

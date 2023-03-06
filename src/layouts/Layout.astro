@@ -3,20 +3,30 @@ import SiteHeader from "../components/SiteHeader.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import FontLoad from "../components/FontLoad.astro";
 
-const navigation = [
-    {
-        name: 'Our Portfolio',
-        href: 'portfolio'
-    },
-    {
-        name: 'Management Team',
-        href: 'team'
-    },
-    {
-        name: 'Contact',
-        href: 'contact'
-    }
-]
+let navigationItems = await Astro.glob("../content/navigation/*.md");
+navigationItems = navigationItems.sort((a, b) => a.frontmatter.order - b.frontmatter.order);
+
+// const navigation = [
+//     {
+//         name: 'About',
+//         href: 'about'
+//     },
+//     {
+//         name: 'Our Portfolio',
+//         href: 'portfolio'
+//     },
+//     {
+//         name: 'Management Team',
+//         href: 'team'
+//     },
+//     {
+//         name: 'Contact',
+//         href: 'https://investors.appfolioim.com/younglewinmurphy/investor/contact-us',
+//         external: true
+//     }
+// ]
+
+import * as siteSettings from "../content/settings/Harbor-Vista.md"
 
 const route = Astro.url.pathname;
 
@@ -80,9 +90,9 @@ const { title, description } = Astro.props;
     <script defer src="https://unpkg.com/alpinejs@3.10.5/dist/cdn.min.js"></script>
 </head>
 <body class="text-neutral-700 leading-normal" x-data="{ linkActive: false }">
-    <SiteHeader navigation={navigation} isHome={route === '/'} />
+    <SiteHeader navigation={navigationItems} investorLink={siteSettings.frontmatter.investorLink} isHome={route === '/'} />
     <slot name='main-content'></slot>
-    <SiteFooter navigation={navigation} isHome={route === '/'} />
+    <SiteFooter navigation={navigationItems} investorLink={siteSettings.frontmatter.investorLink} isHome={route === '/'} />
 </body>
 </html>
 

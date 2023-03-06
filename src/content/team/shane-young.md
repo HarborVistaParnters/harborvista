@@ -1,15 +1,15 @@
 ---
 name: Shane Young
-title: Executive VP
+title: Partner
 intro: >-
-  As Executive VP, Shane Young is primarily focused on deal sourcing, outside
-  marketing, capital markets, investor relations and real commercial brokerage.
+  Shane Young is primarily focused on deal sourcing, outside marketing, capital
+  markets, investor relations and real commercial brokerage.
 headshot: /young-crop.jpg
 order: 2
 slug: shane-young
 ---
 
-As **Executive VP**, Shane Young is primarily focused on deal sourcing, outside marketing, capital markets, investor relations and real commercial brokerage.
+Shane Young is primarily focused on deal sourcing, outside marketing, capital markets, investor relations and real commercial brokerage.
 
 Shane began his career in 2014 as a commercial real estate agent specializing in Long Beach/South Bay multifamily sales at Marcus & Millichap where he achieved the distinction of becoming the youngest First Vice President in company history.
 

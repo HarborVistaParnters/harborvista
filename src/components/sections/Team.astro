@@ -1,48 +1,49 @@
 ---
 import TeamMember from "../TeamMember.astro";
 
-const team = await Astro.glob('../../content/team/*.md');
-const teamSorted = team.sort((a, b) => a.frontmatter.order - b.frontmatter.order);
+import * as teamSection from "../../content/navigation/Management-Team.md"
+let team = await Astro.glob('../../content/team/*.md');
+team = team.sort((a, b) => a.frontmatter.order - b.frontmatter.order);
 
-const members = [
-    {
-        name: 'Dan Lewin',
-        title: 'Executive VP',
-        intro: 'As Executive VP, Dan Lewin is primarily focused on acquisitions and dispositions, capital markets, investor relations, and asset management.',
-        bio: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo quia pariatur exercitationem facilis suscipit optio quisquam iste mollitia quidem nulla, facere, esse, quo error officiis aut. Quod et praesentium veritatis temporibus ipsum soluta sunt velit porro, atque rerum. Eligendi, sunt temporibus. Animi nesciunt, maxime at atque ad neque sapiente nemo.',
-        image: 'src/assets/lewin.jpg'
-    },
-    {
-        name: 'Shane Young',
-        title: 'Executive VP',
-        intro: 'As Executive VP, Shane Young is primarily focused on deal sourcing, outside marketing, capital markets, investor relations and real commercial brokerage.',
-        bio: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo quia pariatur exercitationem facilis suscipit optio quisquam iste mollitia quidem nulla, facere, esse, quo error officiis aut. Quod et praesentium veritatis temporibus ipsum soluta sunt velit porro, atque rerum. Eligendi, sunt temporibus. Animi nesciunt, maxime at atque ad neque sapiente nemo.',
-        image: 'src/assets/young.jpg'
-    },
-    {
-        name: 'Derek Burnham',
-        title: 'VP of Planning',
-        intro: 'As VP of Planning, Derek Burnham is primarily focused on the entitlements and permitting, site identification, and managing key civic relationships.',
-        bio: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo quia pariatur exercitationem facilis suscipit optio quisquam iste mollitia quidem nulla, facere, esse, quo error officiis aut. Quod et praesentium veritatis temporibus ipsum soluta sunt velit porro, atque rerum. Eligendi, sunt temporibus. Animi nesciunt, maxime at atque ad neque sapiente nemo.',
-        image: 'src/assets/burnham.jpg'
-    },
-    {
-        name: 'Mark Murphy',
-        title: 'VP of Development',
-        intro: 'As VP of Development, Mark Murphy focuses on project coordination, construction management execution, value-engineering through the design process, and asset management.',
-        bio: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo quia pariatur exercitationem facilis suscipit optio quisquam iste mollitia quidem nulla, facere, esse, quo error officiis aut. Quod et praesentium veritatis temporibus ipsum soluta sunt velit porro, atque rerum. Eligendi, sunt temporibus. Animi nesciunt, maxime at atque ad neque sapiente nemo.',
-        image: 'src/assets/murphy.jpg'
-    },
-]
+// const members = [
+//     {
+//         name: 'Dan Lewin',
+//         title: 'Executive VP',
+//         intro: 'As Executive VP, Dan Lewin is primarily focused on acquisitions and dispositions, capital markets, investor relations, and asset management.',
+//         bio: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo quia pariatur exercitationem facilis suscipit optio quisquam iste mollitia quidem nulla, facere, esse, quo error officiis aut. Quod et praesentium veritatis temporibus ipsum soluta sunt velit porro, atque rerum. Eligendi, sunt temporibus. Animi nesciunt, maxime at atque ad neque sapiente nemo.',
+//         image: 'src/assets/lewin.jpg'
+//     },
+//     {
+//         name: 'Shane Young',
+//         title: 'Executive VP',
+//         intro: 'As Executive VP, Shane Young is primarily focused on deal sourcing, outside marketing, capital markets, investor relations and real commercial brokerage.',
+//         bio: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo quia pariatur exercitationem facilis suscipit optio quisquam iste mollitia quidem nulla, facere, esse, quo error officiis aut. Quod et praesentium veritatis temporibus ipsum soluta sunt velit porro, atque rerum. Eligendi, sunt temporibus. Animi nesciunt, maxime at atque ad neque sapiente nemo.',
+//         image: 'src/assets/young.jpg'
+//     },
+//     {
+//         name: 'Derek Burnham',
+//         title: 'VP of Planning',
+//         intro: 'As VP of Planning, Derek Burnham is primarily focused on the entitlements and permitting, site identification, and managing key civic relationships.',
+//         bio: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo quia pariatur exercitationem facilis suscipit optio quisquam iste mollitia quidem nulla, facere, esse, quo error officiis aut. Quod et praesentium veritatis temporibus ipsum soluta sunt velit porro, atque rerum. Eligendi, sunt temporibus. Animi nesciunt, maxime at atque ad neque sapiente nemo.',
+//         image: 'src/assets/burnham.jpg'
+//     },
+//     {
+//         name: 'Mark Murphy',
+//         title: 'VP of Development',
+//         intro: 'As VP of Development, Mark Murphy focuses on project coordination, construction management execution, value-engineering through the design process, and asset management.',
+//         bio: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo quia pariatur exercitationem facilis suscipit optio quisquam iste mollitia quidem nulla, facere, esse, quo error officiis aut. Quod et praesentium veritatis temporibus ipsum soluta sunt velit porro, atque rerum. Eligendi, sunt temporibus. Animi nesciunt, maxime at atque ad neque sapiente nemo.',
+//         image: 'src/assets/murphy.jpg'
+//     },
+// ]
 
 const { id } = Astro.props;
 
 ---
 
 <article id={id} class="max-w-7xl mx-auto px-4 pt-8" x-intersect={`linkActive = '${id}'`}>
-    <h2 class="mb-20 text-center font-semibold text-xl text-brand-600 uppercase tracking-[0.15em]">Management Team</h2>
+    <h2 class="mb-20 text-center font-semibold text-xl text-brand-600 uppercase tracking-[0.15em]">{teamSection.frontmatter.name}</h2>
     <div class="grid xl:grid-cols-2 gap-x-16 gap-y-32 items-center">
-        {teamSorted.map(member =>
+        {team.map(member =>
             <TeamMember name={member.frontmatter.name} href={`/team/${member.frontmatter.slug}`} image={`./public/${member.frontmatter.headshot}`} title={member.frontmatter.title} intro={member.frontmatter.intro} />
         )}
     </div>

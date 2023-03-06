@@ -1,11 +1,13 @@
 ---
 import Image from '../Image.astro';
 import Button from '../Button.astro';
-// import heroBg from '../../assets/lb-2.jpg';
 
 const heroBg = 'src/assets/lb-2.jpg'
 
-const { id, title, description } = Astro.props;
+let navigation = await Astro.glob("../../content/navigation/*.md");
+navigation = navigation.sort((a, b) => a.frontmatter.order - b.frontmatter.order);
+
+const { id, title, description, investorLink } = Astro.props;
 ---
 
 <article id={id} class="relative min-h-[80vh] sm:min-h-min md:h-[90vh] lg:h-[80vh] overflow-hidden">
@@ -15,13 +17,13 @@ const { id, title, description } = Astro.props;
         <p class="text-base md:text-lg text-brand-300">{description}</p>
         <!-- button group -->
         <div class="flex justify-center items-center flex-wrap gap-6 mb-12 md:mb-0">
-            <Button href="#portfolio">
+            <Button href={`#${navigation[1].frontmatter.href}`}>
                 Learn More
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="relative -top-[0.5px] w-4 h-4 transition-transform group-hover:translate-x-1">
                     <path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd" />
                 </svg>
             </Button>
-            <Button theme="outline-white">
+            <Button href={investorLink} target="_blank" theme="outline-white">
                 Investors
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="relative -top-[0.5px] w-4 h-4 transition-transform group-hover:translate-x-1">
                     <path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd" />

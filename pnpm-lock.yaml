@@ -6,6 +6,7 @@ specifiers:
   '@alpinejs/intersect': ^3.11.1
   '@astrojs/alpinejs': ^0.1.3
   '@astrojs/tailwind': ^3.0.1
+  '@tailwindcss/typography': ^0.5.9
   '@tinacms/cli': ^1.2.2
   '@types/alpinejs': ^3.0.0
   alpinejs: ^3.0.0
@@ -21,6 +22,7 @@ dependencies:
   '@alpinejs/intersect': 3.11.1
   '@astrojs/alpinejs': 0.1.3_apvd5ijf74qgyek4pdk2jhbin4
   '@astrojs/tailwind': 3.0.1_qfqke5cchqs346uastvpt4ztdq
+  '@tailwindcss/typography': 0.5.9_tailwindcss@3.2.7
   '@tinacms/cli': 1.2.2
   '@types/alpinejs': 3.7.1
   alpinejs: 3.11.1
