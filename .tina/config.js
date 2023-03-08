@@ -1,7 +1,7 @@
 import { defineConfig } from "tinacms";
 
-const clientId = import.meta.env.TINACMS_CLIENT_ID;
-const token = import.meta.env.TINACMS_TOKEN;
+const clientId = process.env.TINACMS_CLIENT_ID;
+const token = process.env.TINACMS_TOKEN;
 
 // Your hosting provider likely exposes this as an environment variable
 const branch = "main";
