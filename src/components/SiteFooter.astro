@@ -2,6 +2,7 @@
 import Button from "./Button.astro";
 const { navigation, investorLink, isHome } = Astro.props;
 
+import * as siteSettings from "../content/settings/Harbor-Vista.md"
 const copyright = new Date().getFullYear();
 ---
 <footer class="mt-40">
@@ -22,7 +23,7 @@ const copyright = new Date().getFullYear();
             </div>
         </div>
         <div class="text-sm flex justify-between pb-8">
-            <div class="text-neutral-600">© {copyright} Harbor Vista</div>
+            <div class="text-neutral-600">© {copyright} {siteSettings.frontmatter.title}</div>
             <div>
                 <a href="/" class="text-neutral-600 hover:text-neutral-700 hover:underline">Disclaimer</a>
             </div>
