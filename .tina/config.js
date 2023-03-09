@@ -203,6 +203,38 @@ export default defineConfig({
           },
         ],
       },
+      {
+        name: "propertyPhotos",
+        label: "Property Photos",
+        path: "src/content/property-photos",
+        fields: [
+          {
+            type: "string",
+            name: "property",
+            label: "Property",
+            required: true,
+            isTitle: true,
+          },
+          {
+            type: "image",
+            name: "propertyImage",
+            label: "Property Image",
+            required: true,
+          },
+          {
+            type: "string",
+            name: "propertyImageAlt",
+            label:
+              "Describe the image for screen reader accessibility and SEO.",
+            required: true,
+          },
+          {
+            type: "number",
+            name: "order",
+            label: "Display Order",
+          },
+        ],
+      },
     ],
   },
 });

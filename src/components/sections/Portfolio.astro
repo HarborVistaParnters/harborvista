@@ -9,6 +9,9 @@ import * as portfolioSection from "../../content/navigation/Our-Portfolio.md"
 let portfolioData = await Astro.glob("../../content/portfolio/*.md");
 portfolioData = portfolioData.sort((a, b) => a.frontmatter.order - b.frontmatter.order);
 
+let propertyPhotos = await Astro.glob("../../content/property-photos/*.md");
+propertyPhotos = propertyPhotos.sort((a, b) => a.frontmatter.order - b.frontmatter.order);
+
 // const portfolioData = [
 //     {
 //         name: "Total Value",
@@ -61,6 +64,14 @@ const { id, content } = Astro.props;
             </div>
         )}
     </div>
+    <section class="md:col-span-2">
+        <h3 class="mb-12 text-center font-semibold text-xl text-brand-600 uppercase tracking-[0.15em]">Selected Properties</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {propertyPhotos.map(photo =>
+                <Image src={`./public/${photo.frontmatter.propertyImage}`} alt={photo.frontmatter.propertyImageAlt} class="rounded-lg object-cover aspect-video" />
+            )}
+        </div>
+    </section>
 </article>
 
 <script>
