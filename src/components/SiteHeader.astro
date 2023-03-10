@@ -17,7 +17,7 @@ const { navigation, investorLink, isHome } = Astro.props;
         <div>
             <a href={isHome ? '#' : '/'} class="uppercase tracking-widest font-semibold text-brand-400 hover:text-brand-400/70">Harbor Vista</a>
         </div>
-        <nav class="flex gap-4 flex-wrap items-center text-center">
+        <nav aria-label="Desktop" class="flex gap-4 flex-wrap items-center text-center">
             <!-- Use Alpine x-bind to add conditional active state class when element with same id scrolls into view -->
             <!-- See individual sections for intersect; x-data is on body el -->
             <!-- Conditionally render link, if set to external then if route is home or not to append / -->
@@ -55,6 +55,7 @@ const { navigation, investorLink, isHome } = Astro.props;
         <nav 
             x-show="navOpen"
             x-transition
+            aria-label="Mobile"
             class="relative inset-0 py-6 bg-white flex flex-col gap-y-4"
         >
         {navigation.map(item =>

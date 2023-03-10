@@ -11,7 +11,7 @@ const copyright = new Date().getFullYear();
             <div class="uppercase tracking-widest font-semibold text-brand-400">
                 Harbor Vista
             </div>
-            <div class="flex gap-8 items-center justify-center text-center flex-wrap mt-4">
+            <div class="flex gap-x-8 gap-y-4 items-center justify-center text-center flex-wrap mt-4">
                 {navigation.map(item =>
                     <a href={item.frontmatter.external ? `${item.frontmatter.href}` : isHome ? `#${item.frontmatter.href}` : `/#${item.frontmatter.href}`} target={item.frontmatter.external ? "_blank" : ""} class="text-neutral-600 hover:text-neutral-700 hover:underline">{item.frontmatter.name}</a>
                 )}
@@ -24,9 +24,9 @@ const copyright = new Date().getFullYear();
         </div>
         <div class="text-sm flex justify-between pb-8">
             <div class="text-neutral-600">© {copyright} {siteSettings.frontmatter.title}</div>
-            <div>
+            <!-- <div>
                 <a href="/" class="text-neutral-600 hover:text-neutral-700 hover:underline">Disclaimer</a>
-            </div>
+            </div> -->
         </div>
     </div>
 </footer>

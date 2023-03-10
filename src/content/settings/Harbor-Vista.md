@@ -12,7 +12,9 @@ intro: >-
   local legislative changes.
 investorLink: 'https://app.appfolioim.com/younglewinmurphy/'
 calloutHeader: Sign up for our mailing list.
-calloutText: Sign up to get notified about potential opportunities with Harbor Vista.
+calloutText: >-
+  Sign up for our email list to get notified about updates and potential
+  opportunities with Harbor Vista.
 ---
 
 Since inception in 2020, the firm has purchased **27 properties** with **3 dispositions**, **9 stabilized refinances**, and **15 properties in the active development pipeline**.

@@ -7,11 +7,14 @@ import tailwind from "@astrojs/tailwind";
 import alpinejs from "@astrojs/alpinejs";
 
 // https://astro.build/config
+import sitemap from "@astrojs/sitemap";
+
+// https://astro.build/config
 export default defineConfig({
   vite: {
     ssr: {
-      external: ["@11ty/eleventy-img"],
-    },
+      external: ["@11ty/eleventy-img"]
+    }
   },
-  integrations: [tailwind(), alpinejs()],
+  integrations: [tailwind(), alpinejs(), sitemap()]
 });
