@@ -99,7 +99,8 @@ const { title, description, canonicalURL } = Astro.props;
 
     <!-- Deferred resources -->
     <script defer src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet"></noscript>
 </body>
 </html>
 
@@ -161,6 +162,7 @@ const { title, description, canonicalURL } = Astro.props;
 
     .splide__arrow {
         z-index: 5 !important;
+        background: white !important;
     }
 
     .splide__arrow svg {
