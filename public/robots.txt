@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://harborvista.com/sitemap-index.xml

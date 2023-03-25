@@ -30,7 +30,7 @@ import * as siteSettings from "../content/settings/Harbor-Vista.md"
 
 const route = Astro.url.pathname;
 
-const { title, description } = Astro.props;
+const { title, description, canonicalURL } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -43,6 +43,8 @@ const { title, description } = Astro.props;
     <meta name="description" content={description}>
     <slot name="SEO"></slot>
     <link rel="icon" type="image/svg+xml" href="/hv-favicon.svg">
+    <link rel="sitemap" href="/sitemap-index.xml">
+    <link rel="canonical" href={canonicalURL}>
     <FontLoad />
     <style>
         @font-face {
@@ -88,6 +90,8 @@ const { title, description } = Astro.props;
     </style>
     <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.10.5/dist/cdn.min.js"></script>
     <script defer src="https://unpkg.com/alpinejs@3.10.5/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
 </head>
 <body class="text-neutral-700 leading-normal" x-data="{ linkActive: false }">
     <SiteHeader navigation={navigationItems} investorLink={siteSettings.frontmatter.investorLink} isHome={route === '/'} />
@@ -104,4 +108,67 @@ const { title, description } = Astro.props;
     // Alpine.plugin(intersect);
     // Alpine.plugin(focus);
 	// Alpine.start();
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const splide = new Splide( '.splide', {
+            type: 'loop',
+            padding: '15%',
+            gap: '2em',
+            breakpoints: {
+                640: {
+                    padding: '8%',
+                    gap: '1em'
+                }
+            }
+        } );
+        splide.mount();
+    })
 </script>
+
+<style is:global>
+    /* Splide styles */
+    .splide__pagination__page {
+        background: #CFE9FF !important;
+    }
+
+    .splide__pagination__page.is-active {
+        background: #fff !important;
+        opacity: 1 !important;
+    }
+
+    .splide__track::before, .splide__track::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        height: 100%;
+        width: 22%;
+        z-index: 2;
+    }
+
+    .splide__track::before {
+        left: 0px;
+        background: linear-gradient(to right, white, transparent);
+    }
+
+    .splide__track::after {
+        right: 0px;
+        background: linear-gradient(to left, white, transparent);
+    }
+
+    .splide__arrow {
+        z-index: 5 !important;
+    }
+
+    .splide__arrow svg {
+        fill: #0066BC !important;
+        height: 1.5em;
+        width: 1.5em;
+    }
+
+    @media (max-width: 640px) {
+        .splide__track::before, .splide__track::after {
+            width: 15%;
+        }
+    }
+</style>

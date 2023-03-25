@@ -14,11 +14,13 @@ export async function getStaticPaths() {
     })
 }
 
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
 const { slug } = Astro.params;
 const { frontmatter, Content } = Astro.props.teamMember;
 ---
 
-<Layout title={frontmatter.name + " • Harbor Vista"} description={frontmatter.intro}>
+<Layout title={frontmatter.name + " • Harbor Vista"} description={frontmatter.intro} canonicalURL={canonicalURL}>
     <Fragment slot="SEO"></Fragment>
     <main slot="main-content">
         <div class="mt-16 md:mt-24 max-w-7xl mx-auto px-4 pt-8">

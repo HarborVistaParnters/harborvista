@@ -1,6 +1,7 @@
 ---
 import Image from "../Image.astro";
 // import portfolioImg from "../../assets/lb-5.jpg"
+import Slider from "../Slider.astro";
 
 const portfolioImg = "src/assets/lb-5.jpg"
 
@@ -65,12 +66,12 @@ const { id, content } = Astro.props;
         )}
     </div>
     <section class="md:col-span-2">
-        <h3 class="mb-12 text-center font-semibold text-xl text-brand-600 uppercase tracking-[0.15em]">Selected Properties</h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <Slider slides={propertyPhotos} />
+        <!-- <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {propertyPhotos.map(photo =>
                 <Image src={`./public/${photo.frontmatter.propertyImage}`} alt={photo.frontmatter.propertyImageAlt} class="rounded-lg object-cover aspect-video" />
             )}
-        </div>
+        </div> -->
     </section>
 </article>
 
@@ -95,5 +96,5 @@ const { id, content } = Astro.props;
     // Ignore type errors, should work clientside
     const counter1 = new CountUp('value', values.value, {...baseOptions, ...formattingOptions });
     const counter2 = new CountUp('properties', values.properties, baseOptions);
-    const counter3 = new CountUp('permitted', values.permitted, {...baseOptions })
+    const counter3 = new CountUp('permitted', values.permitted, {...baseOptions });
 </script>

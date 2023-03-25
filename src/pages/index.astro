@@ -9,9 +9,11 @@ import * as siteSettings from "../content/settings/Harbor-Vista.md"
 import * as about from "../content/navigation/About.md"
 import * as ourPortfolio from "../content/navigation/Our-Portfolio.md"
 import * as managementTeam from "../content/navigation/Management-Team.md"
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
-<Layout title={siteSettings.frontmatter.title} description={siteSettings.frontmatter.description}>
+<Layout title={siteSettings.frontmatter.title} description={siteSettings.frontmatter.description} canonicalURL={canonicalURL}>
 	<Fragment slot="SEO">
 		<!-- opengraph -->
 	</Fragment>
