@@ -88,15 +88,18 @@ const { title, description, canonicalURL } = Astro.props;
             height: auto;
         }
     </style>
+    <!-- Alpine -->
     <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.10.5/dist/cdn.min.js"></script>
     <script defer src="https://unpkg.com/alpinejs@3.10.5/dist/cdn.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
 </head>
 <body class="text-neutral-700 leading-normal" x-data="{ linkActive: false }">
     <SiteHeader navigation={navigationItems} investorLink={siteSettings.frontmatter.investorLink} isHome={route === '/'} />
     <slot name='main-content'></slot>
     <SiteFooter navigation={navigationItems} investorLink={siteSettings.frontmatter.investorLink} isHome={route === '/'} />
+
+    <!-- Deferred resources -->
+    <script defer src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
 </body>
 </html>
 
