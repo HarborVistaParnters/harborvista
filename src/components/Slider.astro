@@ -12,7 +12,7 @@ const { slides } = Astro.props;
                 {slides.map(slide =>
                     <li class="splide__slide">
                         <div class="text-sm md:text-base absolute z-10 top-4 right-4 py-1 px-2 rounded-md bg-brand-400 text-white leading-none">{slide.frontmatter.property}</div>
-                        <Image src={`./public/${slide.frontmatter.propertyImage}`} alt={slide.frontmatter.propertyImageAlt} class="rounded-lg w-full object-cover aspect-[9/6]" />
+                        <Image src={`./public/${slide.frontmatter.propertyImage}`} alt={slide.frontmatter.propertyImageAlt} class="rounded-lg w-full object-cover aspect-[6/9] sm:aspect-[9/6]" />
                     </li>
                 )}
             </ul>
