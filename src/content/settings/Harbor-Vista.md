@@ -1,9 +1,9 @@
 ---
-title: Harbor Vista
+title: Harbor Vista | Commercial Real Estate Development Firm
 description: >-
-  Harbor Vista focuses on real estate investment projects in the state of CA,
-  focusing on opportunities for increased-density made possible by recent
-  legislative changes.
+  Harbor Vista is a commercial real estate development firm in Long Beach, CA,
+  focusing on investment opportunities for increased-density made possible by
+  recent California legislative changes.
 header: Harbor Vista
 intro: >-
   Harbor Vista focuses on ground-up and value-add real estate investment
