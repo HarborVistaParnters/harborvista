@@ -34,7 +34,7 @@ const { id, title, description, investorLink } = Astro.props;
     <!-- Overlay -->
     <div class="absolute left-0 bottom-0 right-0 h-2/3 z-[2] bg-gradient"></div>
     <!-- Image -->
-    <Image src={heroBg} alt="Long Beach harbor at sunset." class="absolute inset-0 h-full w-full object-cover" />
+    <Image src={heroBg} alt="Long Beach harbor at sunset." loading="eager" class="absolute inset-0 h-full w-full object-cover" />
     <!-- <img src={heroBg} alt="" class="absolute inset-0 h-full w-full object-cover"> -->
 </article>
 <svg preserveAspectRatio="xMidYMid meet" viewBox="0 0 1440 118" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full relative aspect-[1440/118] mb-8 md:mb-32">

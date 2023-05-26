@@ -12,6 +12,7 @@ import sitemap from "@astrojs/sitemap";
 // https://astro.build/config
 export default defineConfig({
   site: "https://harborvista.com",
+  compressHTML: true,
   vite: {
     ssr: {
       external: ["@11ty/eleventy-img"],
